@@ -1,1 +1,0 @@
-C:37:"PHPUnit\Runner\DefaultTestResultCache":201:{a:2:{s:7:"defects";a:1:{s:38:"TUDublinTests\StudentTest::testIfWorks";i:4;}s:5:"times";a:2:{s:37:"TUDublinTests\SimpleTest::testIfWorks";d:0.003;s:38:"TUDublinTests\StudentTest::testIfWorks";d:0.001;}}}
