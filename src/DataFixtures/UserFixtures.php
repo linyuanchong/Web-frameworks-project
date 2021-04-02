@@ -32,12 +32,14 @@ class UserFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         // create objects
-        $userUser = $this->createUser('user@user.com', 'user');
-        $userMatt = $this->createUser('matt.smith@smith.com', 'smith', 'ROLE_ADMIN');
+        $rumiAdmin = $this->createUser('rumiAdmin@email.com', 'rumi', 'ROLE_ADMIN');
+        $setantaAdmin = $this->createUser('setantaAdmin@email.com', 'setanta', 'ROLE_ADMIN');
+        $serenureAdmin = $this->createUser('serenureAdmin@email.com', 'serenure', 'ROLE_ADMIN');
 
         // add to DB queue
-        $manager->persist($userUser);
-        $manager->persist($userMatt);
+        $manager->persist($rumiAdmin);
+        $manager->persist($setantaAdmin);
+        $manager->persist($serenureAdmin);
 
         // send query to DB
         $manager->flush();
