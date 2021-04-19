@@ -35,6 +35,16 @@ class User implements UserInterface
      */
     private $role;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Club::class)
+     */
+    private $club;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -115,6 +125,35 @@ class User implements UserInterface
         $this->role = $role;
 
         return $this;
+    }
+
+    public function getClub(): ?Club
+    {
+        return $this->club;
+    }
+
+    public function setClub(?Club $club): self
+    {
+        $this->club = $club;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
 }

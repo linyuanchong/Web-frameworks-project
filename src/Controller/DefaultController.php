@@ -17,20 +17,12 @@ class DefaultController extends AbstractController
         $args = [];
         return $this->render($template, $args);
     }
-    /**
-     * @Route("/book", name="book")
-     */
-    public function book(): Response
-    {
-        $template = 'default/book.html.twig';
-        $args = [];
-        return $this->render($template, $args);
-    }
-    /**
-     * @Route("/club", name="club")
-     */
-    public function club(): Response
-    {
-    }
+
+
+
+
+
+
+
 
 }
