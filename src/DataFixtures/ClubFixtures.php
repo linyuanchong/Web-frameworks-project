@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Book;
 use App\Entity\Club;
+use App\Entity\Comment;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -147,7 +148,50 @@ class ClubFixtures extends Fixture
         $u9->setEmail("parker@email.com");
 
         //COMMENT.
-        
+        $cm1 = new Comment();
+        $cm1->setUser($u1);
+        $cm1->setBook($b4);
+        $cm1->setCommenttext("Good book, loved it.");
+        //
+        $cm2 = new Comment();
+        $cm2->setUser($u2);
+        $cm2->setBook($b7);
+        $cm2->setCommenttext("Burn it before it's too late.");
+        //
+        $cm3 = new Comment();
+        $cm3->setUser($u6);
+        $cm3->setBook($b2);
+        $cm3->setCommenttext("Who wrote this again?");
+        //
+        $cm4 = new Comment();
+        $cm4->setUser($u5);
+        $cm4->setBook($b1);
+        $cm4->setCommenttext("This book cleansed me.");
+        //
+        $cm5 = new Comment();
+        $cm5->setUser($u9);
+        $cm5->setBook($b9);
+        $cm5->setCommenttext("Overall acceptable.");
+        //
+        $cm6 = new Comment();
+        $cm6->setUser($u7);
+        $cm6->setBook($b5);
+        $cm6->setCommenttext("Pretty nice.");
+        //
+        $cm7 = new Comment();
+        $cm7->setUser($u8);
+        $cm7->setBook($b2);
+        $cm7->setCommenttext("Worth the time.");
+        //
+        $cm8 = new Comment();
+        $cm8->setUser($u3);
+        $cm8->setBook($b6);
+        $cm8->setCommenttext("Will definitely re-read it.");
+        //
+        $cm9 = new Comment();
+        $cm9->setUser($u4);
+        $cm9->setBook($b8);
+        $cm9->setCommenttext("Very good book, will promote it to other people.");
 
         $manager->persist($c1);
         $manager->persist($c2);
@@ -172,6 +216,16 @@ class ClubFixtures extends Fixture
         $manager->persist($u7);
         $manager->persist($u8);
         $manager->persist($u9);
+
+        $manager->persist($cm1);
+        $manager->persist($cm2);
+        $manager->persist($cm3);
+        $manager->persist($cm4);
+        $manager->persist($cm5);
+        $manager->persist($cm6);
+        $manager->persist($cm7);
+        $manager->persist($cm8);
+        $manager->persist($cm9);
 
         $manager->flush();
     }

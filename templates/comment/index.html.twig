@@ -9,7 +9,9 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Commenttext</th>
+                <th>User</th>
+                <th>Book</th>
+                <th>Comment</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -17,6 +19,8 @@
         {% for comment in comments %}
             <tr>
                 <td>{{ comment.id }}</td>
+                <td>{{ comment.user }}</td>
+                <td>{{ comment.book }}</td>
                 <td>{{ comment.commenttext }}</td>
                 <td>
                     <a href="{{ path('comment_show', {'id': comment.id}) }}">show</a>
