@@ -55,16 +55,37 @@
                 Clubs
             </a>
         </li>
+        {% if is_granted('ROLE_ADMIN') %}
         <li>
             <a href="{{ url('user_index') }}">
                 Users
             </a>
         </li>
+        {% endif %}
+        {% if is_granted('ROLE_ADMIN') %}
+            <li>
+                <a href="{{ url('application_index') }}">
+                    Club applications
+                </a>
+            </li>
+        {% endif %}
         <li>
             <a href="{{ url('comment_index') }}">
                 Comment
             </a>
         </li>
+        <li>
+            <a href="{{ url('application_new') }}">
+                Join a club
+            </a>
+        </li>
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a href="{{ url('app_logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url('app_login') }}">Login</a>
+        {% endif %}
+
     </ul>
 </nav>
 

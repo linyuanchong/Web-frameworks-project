@@ -24,7 +24,10 @@
                 <td>{{ comment.commenttext }}</td>
                 <td>
                     <a href="{{ path('comment_show', {'id': comment.id}) }}">show</a>
+
+                    {% if is_granted('ROLE_STAFF') %}
                     <a href="{{ path('comment_edit', {'id': comment.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -35,5 +38,7 @@
         </tbody>
     </table>
 
+    {% if is_granted('ROLE_USER') %}
     <a href="{{ path('comment_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}
