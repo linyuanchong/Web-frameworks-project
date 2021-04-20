@@ -10,21 +10,81 @@
     {% endblock %}
 
     <style>
+
         footer {
             color: white;
             background-color: blue;
             padding: 0.5rem;
         }
 
-        h1 {
-            color: white;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
+
+        th, td {
+            color: black;
+            padding: 10px;
+            background-color: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+
         body {
-            background-color: deepskyblue;
+            margin: 0;
+            background: url(https://free4kwallpapers.com/uploads/originals/2020/10/30/colorful-wallpaper.png) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            font-family: sans-serif;
+            font-weight: 100;
+            height: 100%;
+        }
+
+        h1 {
+            background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
+            background-size: cover;
+            color: transparent;
+            -moz-background-clip: text;
+            -webkit-background-clip: text;
+            text-transform: uppercase;
+            font-size: 50px;
+            line-height: .75;
+            margin: 10px 0;
         }
 
         table, tr, td {
             border: 0.1rem solid black;
+        }
+
+        button {
+            background-color: cadetblue;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-indent: 20px;
+            text-align: justify;
+            letter-spacing: 1px;
         }
     </style>
 
@@ -74,11 +134,15 @@
                 Comment
             </a>
         </li>
-        <li>
-            <a href="{{ url('application_new') }}">
-                Join a club
-            </a>
-        </li>
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% else %}
+            <li>
+                <a href="{{ url('application_new') }}">
+                    Join a club
+                </a>
+            </li>
+        {% endif %}
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <a href="{{ url('app_logout') }}">Logout</a>
@@ -88,10 +152,6 @@
 
     </ul>
 </nav>
-
-<footer>
-    By Linyuan.
-</footer>
 
 </body>
 

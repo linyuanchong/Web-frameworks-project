@@ -6,7 +6,7 @@
 
 {% block body %}
     <h1>Dublin Book Clubs Online: DUBCO</h1>
-    Welcome to the Dublin Book Clubs Online official site.
+    <label>Welcome to the Dublin Book Clubs Online official site.</label>
 
     {% if is_granted('NULL') %}
         <p>
@@ -34,10 +34,7 @@
 
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <p>
-            Username: {{ app.user.username }}
-        </p>
-        <p>
-            Club: {{ app.user.club }}
+            Welcome, {{ app.user.username }} of book club {{ app.user.club }}.
         </p>
     {% endif %}
 
