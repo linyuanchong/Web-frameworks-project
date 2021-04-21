@@ -2,27 +2,26 @@
 
 namespace App\Form;
 
-use App\Entity\Application;
+use App\Entity\Reply;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ApplicationType extends AbstractType
+class ReplyType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('email')
-            ->add('password')
-            ->add('club')
+            ->add('acceptance')
+            ->add('reason')
+            ->add('application')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Application::class,
+            'data_class' => Reply::class,
         ]);
     }
 }

@@ -2,9 +2,12 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Application;
 use App\Entity\Book;
 use App\Entity\Club;
 use App\Entity\Comment;
+use App\Entity\Reply;
+use App\Entity\Suggestion;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -170,6 +173,78 @@ class UserFixtures extends Fixture
         $cm9->setBook($b8);
         $cm9->setCommenttext("Very good book, will promote it to other people.");
 
+        //APPLICATIONS.
+        $a1 = new Application();
+        $a1->setName('Jackie');
+        $a1->setEmail('jackie@email.com');
+        $a1->setPassword('jackie');
+        $a1->setClub($c1);
+        //
+        $a2 = new Application();
+        $a2->setName('Madonna');
+        $a2->setEmail('madonna@email.com');
+        $a2->setPassword('madonna');
+        $a2->setClub($c1);
+        //
+        $a3 = new Application();
+        $a3->setName('Anthony');
+        $a3->setEmail('anthony@email.com');
+        $a3->setPassword('anthony');
+        $a3->setClub($c2);
+        //
+        $a4 = new Application();
+        $a4->setName('Alex');
+        $a4->setEmail('alex@email.com');
+        $a4->setPassword('alex');
+        $a4->setClub($c2);
+        //
+        $a5 = new Application();
+        $a5->setName('Madison');
+        $a5->setEmail('madison@email.com');
+        $a5->setPassword('madison');
+        $a5->setClub($c3);
+        //
+        $a6 = new Application();
+        $a6->setName('Zoey');
+        $a6->setEmail('zoey@email.com');
+        $a6->setPassword('zoey');
+        $a6->setClub($c3);
+
+        //SUGGESTIONS.
+        $s1 = new Suggestion();
+        $s1->setClub($c1);
+        $s1->setBooktitle('Dungeons and Dragons');
+        $s1->setAuthor('H. Henry');
+        $s1->setPublisher('The 20s');
+        //
+        $s2 = new Suggestion();
+        $s2->setClub($c2);
+        $s2->setBooktitle('Mr. Midnight');
+        $s2->setAuthor('G. Ramsay');
+        $s2->setPublisher('Forever');
+        //
+        $s3 = new Suggestion();
+        $s3->setClub($c3);
+        $s3->setBooktitle('The Night We Met');
+        $s3->setAuthor('C. Hayward');
+        $s3->setPublisher('Celtics');
+
+        //REPLIES.
+        $r1 = new Reply();
+        $r1->setApplication($a1);
+        $r1->setAcceptance(FALSE);
+        $r1->setReason('Club full.');
+        //
+        $r2 = new Reply();
+        $r2->setApplication($a3);
+        $r2->setAcceptance(TRUE);
+        $r2->setReason('You love books.');
+        //
+        $r3 = new Reply();
+        $r3->setApplication($a5);
+        $r3->setAcceptance(FALSE);
+        $r3->setReason('We dont think you have enough passion for books.');
+
         //Add to DB queue
         $manager->persist($c1);
         $manager->persist($c2);
@@ -210,6 +285,22 @@ class UserFixtures extends Fixture
         $manager->persist($cm7);
         $manager->persist($cm8);
         $manager->persist($cm9);
+
+        $manager->persist($a1);
+        $manager->persist($a2);
+        $manager->persist($a3);
+        $manager->persist($a4);
+        $manager->persist($a5);
+        $manager->persist($a6);
+
+        $manager->persist($s1);
+        $manager->persist($s2);
+        $manager->persist($s3);
+
+        $manager->persist($r1);
+        $manager->persist($r2);
+        $manager->persist($r3);
+
 
         // send query to DB
         $manager->flush();

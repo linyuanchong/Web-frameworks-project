@@ -19,22 +19,19 @@ class ApplicationRepository extends ServiceEntityRepository
         parent::__construct($registry, Application::class);
     }
 
-    // /**
-    //  * @return Application[] Returns an array of Application objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Application[] Returns an array of Book objects
+     */
+
+    public function findByClub($club)
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('a.club = :val')
+            ->setParameter('val', $club)
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Application

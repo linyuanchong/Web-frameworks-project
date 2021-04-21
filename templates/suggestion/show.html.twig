@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suggestion{% endblock %}
+
+{% block body %}
+    <h1>Suggestion</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ suggestion.id }}</td>
+            </tr>
+            <tr>
+                <th>Booktitle</th>
+                <td>{{ suggestion.booktitle }}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ suggestion.author }}</td>
+            </tr>
+            <tr>
+                <th>Publisher</th>
+                <td>{{ suggestion.publisher }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('suggestion_index') }}">back to list</a>
+    {% if is_granted('ROLE_STAFF') %}
+    <a href="{{ path('suggestion_edit', {'id': suggestion.id}) }}">edit</a>
+    {% endif %}
+
+    {{ include('suggestion/_delete_form.html.twig') }}
+{% endblock %}

@@ -22,9 +22,18 @@ class BookController extends AbstractController
      */
     public function index(BookRepository $bookRepository): Response
     {
-        return $this->render('book/index.html.twig', [
-            'books' => $bookRepository->findAll(),
-        ]);
+        if ($this->getUser() == NULL) {
+            return $this->render('book/index.html.twig', [
+                'books' => $bookRepository->findAll(),
+            ]);
+        }
+        else {
+            $club = $this->getUser()->getClub();
+
+            return $this->render('book/index.html.twig', [
+                'books' => $bookRepository->findByClubOrderByName($club),
+            ]);
+        }
     }
 
     /**

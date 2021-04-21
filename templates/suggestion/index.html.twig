@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suggestion index{% endblock %}
+
+{% block body %}
+    <h1>Suggest a book</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Booktitle</th>
+                <th>Author</th>
+                <th>Publisher</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for suggestion in suggestions %}
+            <tr>
+                <td>{{ suggestion.id }}</td>
+                <td>{{ suggestion.booktitle }}</td>
+                <td>{{ suggestion.author }}</td>
+                <td>{{ suggestion.publisher }}</td>
+                <td>
+                    <a href="{{ path('suggestion_show', {'id': suggestion.id}) }}">show</a>
+                    {% if is_granted('ROLE_STAFF') %}
+                    <a href="{{ path('suggestion_edit', {'id': suggestion.id}) }}">edit</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if is_granted('ROLE_USER') %}
+    <a href="{{ path('suggestion_new') }}">Suggest book</a>
+    {% endif %}
+{% endblock %}

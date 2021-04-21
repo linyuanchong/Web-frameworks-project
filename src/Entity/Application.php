@@ -38,16 +38,6 @@ class Application
      */
     private $club;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $approval;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $reason;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -101,27 +91,8 @@ class Application
         return $this;
     }
 
-    public function getApproval(): ?bool
+    public function __toString()
     {
-        return $this->approval;
-    }
-
-    public function setApproval(?bool $approval): self
-    {
-        $this->approval = $approval;
-
-        return $this;
-    }
-
-    public function getReason(): ?string
-    {
-        return $this->reason;
-    }
-
-    public function setReason(string $reason): self
-    {
-        $this->reason = $reason;
-
-        return $this;
+        return $this->email;
     }
 }

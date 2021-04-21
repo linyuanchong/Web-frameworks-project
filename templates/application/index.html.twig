@@ -3,18 +3,18 @@
 {% block title %}Application index{% endblock %}
 
 {% block body %}
-    <h1>Application index</h1>
+    <h1>Applications</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                {% if is_granted('ROLE_STAFF') %}
                 <th>Email</th>
                 <th>Password</th>
-                <th>Approval</th>
-                <th>Reason</th>
                 <th>actions</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -22,22 +22,31 @@
             <tr>
                 <td>{{ application.id }}</td>
                 <td>{{ application.name }}</td>
+                {% if is_granted('ROLE_STAFF') %}
                 <td>{{ application.email }}</td>
                 <td>{{ application.password }}</td>
-                <td>{{ application.approval ? 'Yes' : 'No' }}</td>
-                <td>{{ application.reason }}</td>
+                {% endif %}
                 <td>
+                    {% if is_granted('ROLE_STAFF') %}
                     <a href="{{ path('application_show', {'id': application.id}) }}">show</a>
                     <a href="{{ path('application_edit', {'id': application.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('application_new') }}">Create new</a>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="{{ path('reply_new') }}">Reply applications</a>
+        <p></p>
+        <a href="{{ path('user_new') }}">Add new user</a>
+    {% else %}
+        <a href="{{ path('application_new') }}">Join a club</a>
+    {% endif %}
+
 {% endblock %}

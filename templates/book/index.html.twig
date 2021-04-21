@@ -3,7 +3,11 @@
 {% block title %}Book index{% endblock %}
 
 {% block body %}
-    <h1>Book index</h1>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <h1>Books of my club</h1>
+    {% else %}
+        <h1>Books</h1>
+    {% endif %}
 
     <table class="table">
         <thead>

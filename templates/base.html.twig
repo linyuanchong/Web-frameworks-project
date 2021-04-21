@@ -111,16 +111,40 @@
                 Home
             </a>
         </li>
-        <li>
-            <a href="{{ url('book_index') }}">
-                Books
-            </a>
-        </li>
-        <li>
-            <a href="{{ url('club_index') }}">
-                Clubs
-            </a>
-        </li>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li>
+                <a href="{{ url('book_index') }}">
+                    Books of my club
+                </a>
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ url('book_index') }}">
+                    Books
+                </a>
+            </li>
+        {% endif %}
+
+        {% if is_granted('ROLE_USER') %}
+            <li>
+                <a href="{{ url('suggestion_new') }}">
+                    Suggest a book
+                </a>
+            </li>
+        {% elseif is_granted('ROLE_STAFF')%}
+            <li>
+                <a href="{{ url('suggestion_index') }}">
+                    Book suggestions for my club
+                </a>
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ url('club_index') }}">
+                    All clubs
+                </a>
+            </li>
+        {% endif %}
+
         {% if is_granted('ROLE_ADMIN') %}
         <li>
             <a href="{{ url('user_index') }}">
@@ -130,25 +154,33 @@
         {% endif %}
         {% if is_granted('ROLE_ADMIN') %}
             <li>
-                <a href="{{ url('application_index') }}">
+                <a href="{{ url('comment_index') }}">
                     Club applications
                 </a>
             </li>
         {% endif %}
         <li>
             <a href="{{ url('comment_index') }}">
-                Comment
+                Comments
             </a>
         </li>
 
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if is_granted('ROLE_STAFF') %}
+            <li>
+                <a href="{{ url('application_index') }}">
+                    Reply club applications
+                </a>
+            </li>
+        {% elseif is_granted('ROLE_USER')%}
+
         {% else %}
             <li>
-                <a href="{{ url('application_new') }}">
-                    Join a club
+                <a href="{{ url('reply_index') }}">
+                    Club application
                 </a>
             </li>
         {% endif %}
+
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <li>

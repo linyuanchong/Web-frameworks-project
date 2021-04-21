@@ -20,9 +20,18 @@ class ApplicationController extends AbstractController
      */
     public function index(ApplicationRepository $applicationRepository): Response
     {
-        return $this->render('application/index.html.twig', [
-            'applications' => $applicationRepository->findAll(),
-        ]);
+        if ($this->getUser() == NULL) {
+            return $this->render('application/index.html.twig', [
+                'applications' => $applicationRepository->findAll(),
+            ]);
+        }
+        else {
+            $club = $this->getUser()->getClub();
+
+            return $this->render('application/index.html.twig', [
+                'applications' => $applicationRepository->findByClub($club),
+            ]);
+        }
     }
 
     /**

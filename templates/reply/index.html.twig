@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reply index{% endblock %}
+
+{% block body %}
+    <h1>Application statuses</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Applier</th>
+                <th>Acceptance</th>
+                <th>Reason</th>
+                {% if is_granted('ROLE_STAFF') %}
+                <th>actions</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for reply in replies %}
+            <tr>
+                <td>{{ reply.application }}</td>
+                <td>{{ reply.acceptance ? 'Yes' : 'No' }}</td>
+                <td>{{ reply.reason }}</td>
+                <td>
+                    {% if is_granted('ROLE_STAFF') %}
+                    <a href="{{ path('reply_show', {'id': reply.id}) }}">show</a>
+                    <a href="{{ path('reply_edit', {'id': reply.id}) }}">edit</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('application_new') }}">Join a club</a>
+{% endblock %}
