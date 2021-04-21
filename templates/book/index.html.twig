@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Book index{% endblock %}
+{% block title %}Book Page{% endblock %}
 
 {% block body %}
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -44,6 +44,8 @@
     </table>
 
     {% if is_granted('ROLE_STAFF') %}
-        <a href="{{ path('book_new') }}">Create new</a>
+        <a href="{{ path('book_new_by_staff') }}">Add new book</a>
+    {% elseif is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('book_new_by_admin') }}">Add new book</a>
     {% endif %}
 {% endblock %}

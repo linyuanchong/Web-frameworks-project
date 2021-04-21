@@ -152,13 +152,6 @@
             </a>
         </li>
         {% endif %}
-        {% if is_granted('ROLE_ADMIN') %}
-            <li>
-                <a href="{{ url('comment_index') }}">
-                    Club applications
-                </a>
-            </li>
-        {% endif %}
         <li>
             <a href="{{ url('comment_index') }}">
                 Comments
@@ -167,8 +160,13 @@
 
         {% if is_granted('ROLE_STAFF') %}
             <li>
+                <a href="{{ url('user_index') }}">
+                    Club members
+                </a>
+            </li>
+            <li>
                 <a href="{{ url('application_index') }}">
-                    Reply club applications
+                    Club applications
                 </a>
             </li>
         {% elseif is_granted('ROLE_USER')%}
@@ -176,7 +174,7 @@
         {% else %}
             <li>
                 <a href="{{ url('reply_index') }}">
-                    Club application
+                    Signup/Club application
                 </a>
             </li>
         {% endif %}

@@ -2,26 +2,28 @@
 
 namespace App\Form;
 
-use App\Entity\Suggestion;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SuggestionType extends AbstractType
+class UserAdminType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('booktitle')
-            ->add('author')
-            ->add('publisher')
+            ->add('email')
+            ->add('password')
+            ->add('role')
+            ->add('name')
+            ->add('club')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Suggestion::class,
+            'data_class' => User::class,
         ]);
     }
 }

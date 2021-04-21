@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reply index{% endblock %}
+{% block title %}Reply Page{% endblock %}
 
 {% block body %}
     <h1>Application statuses</h1>
@@ -20,7 +20,7 @@
         {% for reply in replies %}
             <tr>
                 <td>{{ reply.application }}</td>
-                <td>{{ reply.acceptance ? 'Yes' : 'No' }}</td>
+                <td>{{ reply.acceptance ? 'Accepted' : 'Declined' }}</td>
                 <td>{{ reply.reason }}</td>
                 <td>
                     {% if is_granted('ROLE_STAFF') %}

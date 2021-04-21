@@ -3,7 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Book;
-use App\Form\BookType;
+use App\Form\BookAdminType;
+use App\Form\BookStaffType;
 use App\Repository\BookRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,7 +23,7 @@ class BookController extends AbstractController
      */
     public function index(BookRepository $bookRepository): Response
     {
-        if ($this->getUser() == NULL) {
+        if ($this->getUser() == NULL || $this->getUser()->getRole() == "ROLE_ADMIN") {
             return $this->render('book/index.html.twig', [
                 'books' => $bookRepository->findAll(),
             ]);
@@ -37,16 +38,43 @@ class BookController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="book_new", methods={"GET","POST"})
+     * @Route("/new_by_admin", name="book_new_by_admin", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function newByAdmin(Request $request): Response
     {
         $book = new Book();
-        $form = $this->createForm(BookType::class, $book);
+        $form = $this->createForm(BookAdminType::class, $book);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($book);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('book_index');
+        }
+
+        return $this->render('book/new.html.twig', [
+            'book' => $book,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/new_by_staff", name="book_new_by_staff", methods={"GET","POST"})
+     */
+
+    public function newByStaff(Request $request): Response
+    {
+        $book = new Book();
+        $form = $this->createForm(BookStaffType::class, $book);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $club = $this->getUser()->getClub();
+            $book->setClub($club);
+
             $entityManager->persist($book);
             $entityManager->flush();
 
@@ -74,7 +102,7 @@ class BookController extends AbstractController
      */
     public function edit(Request $request, Book $book): Response
     {
-        $form = $this->createForm(BookType::class, $book);
+        $form = $this->createForm(BookStaffType::class, $book);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
