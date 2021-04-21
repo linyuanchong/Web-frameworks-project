@@ -11,55 +11,27 @@
 
     <style>
 
-        footer {
-            color: white;
-            background-color: blue;
-            padding: 0.5rem;
-        }
-
-        table {
+        input, select {
             width: 100%;
-            border-collapse: collapse;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-
-        th, td {
-            color: black;
-            padding: 10px;
-            background-color: rgba(255,255,255,0.2);
-            color: #fff;
-        }
-
-        body {
-            margin: 0;
-            background: url(https://free4kwallpapers.com/uploads/originals/2020/10/30/colorful-wallpaper.png) no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            font-family: sans-serif;
-            font-weight: 100;
-            height: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
         }
 
         h1 {
-            background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
-            background-size: cover;
-            color: transparent;
-            -moz-background-clip: text;
-            -webkit-background-clip: text;
+            background-color: black;
             text-transform: uppercase;
-            font-size: 50px;
-            line-height: .75;
-            margin: 10px 0;
+            color: white;
         }
 
-        table, tr, td {
-            border: 0.1rem solid black;
+        a {
+            text-align: center;
+            text-transform: uppercase;
+            color: black;
         }
 
         button {
-            background-color: cadetblue;
+            background-color: deepskyblue;
             border: none;
             color: white;
             padding: 15px 32px;
@@ -69,22 +41,56 @@
             font-size: 16px;
             margin: 4px 2px;
             cursor: pointer;
-        }
-
-        input, select {
             width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
         }
 
-        a {
-            text-indent: 20px;
-            text-align: justify;
-            letter-spacing: 1px;
+        table {
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        tr:nth-child(even){background-color: #f2f2f2;}
+
+        tr:hover {background-color: #ddd;}
+
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: midnightblue;
+            color: white;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 9px 0px;
+            background-color: midnightblue;
+        }
+
+        li {
+            text-align: left;
+            display: inline;
+        }
+
+        li a {
+            color: white;
+            padding: 9px 17px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: deepskyblue;
+            color: black;
+        }
+
+        .active {
+            background-color: #dddddd;
+            color: black;
         }
     </style>
 
@@ -145,9 +151,17 @@
         {% endif %}
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <a href="{{ url('app_logout') }}">Logout</a>
+            <li>
+                <a href="{{ url('app_logout') }}">
+                    Logout
+                </a>
+            </li>
         {% else %}
-            <a href="{{ url('app_login') }}">Login</a>
+            <li>
+                <a href="{{ url('app_login') }}">
+                    Login
+                </a>
+            </li>
         {% endif %}
 
     </ul>
