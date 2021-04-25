@@ -33,6 +33,19 @@ class Reply
      */
     private $reason;
 
+    /**
+     * Reply constructor.
+     * @param $application
+     * @param $acceptance
+     * @param $reason
+     */
+    public function __construct($application, $acceptance, $reason)
+    {
+        $this->application = $application;
+        $this->acceptance = $acceptance;
+        $this->reason = $reason;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

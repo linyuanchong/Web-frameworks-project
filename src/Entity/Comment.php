@@ -32,6 +32,19 @@ class Comment
      */
     private $commenttext;
 
+    /**
+     * Comment constructor.
+     * @param $user
+     * @param $book
+     * @param $commenttext
+     */
+    public function __construct($user, $book, $commenttext)
+    {
+        $this->user = $user;
+        $this->book = $book;
+        $this->commenttext = $commenttext;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

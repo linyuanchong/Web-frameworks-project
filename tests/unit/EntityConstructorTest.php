@@ -16,6 +16,7 @@ class EntityConstructorTest extends TestCase
     public function testClubConstructor()
     {
         $newClub = new Club('clubName', 10);
+
         $this->assertNotNull($newClub);
     }
 
@@ -24,6 +25,7 @@ class EntityConstructorTest extends TestCase
     {
         $newClub = new Club('clubName', 12);
         $newUser = new User('user@email.com', 'userPassword', 'USER_ROLE', 'userName', $newClub);
+
         $this->assertNotNull($newUser);
     }
 
@@ -32,6 +34,7 @@ class EntityConstructorTest extends TestCase
     {
         $newClub = new Club('clubName', 12);
         $newBook = new Book("bookName", "bookAuthor", "bookPublisher", $newClub);
+
         $this->assertNotNull($newBook);
     }
 
@@ -40,6 +43,7 @@ class EntityConstructorTest extends TestCase
     {
         $newClub = new Club('clubName', 12);
         $newApplication = new Application('userName', 'user@email.com', 'userPassword', 'John', $newClub);
+
         $this->assertNotNull($newApplication);
     }
 
@@ -49,6 +53,7 @@ class EntityConstructorTest extends TestCase
         $newClub = new Club('clubName', 12);
         $newApplication = new Application('userName', 'user@email.com', 'userPassword', 'John', $newClub);
         $newReply = new Reply($newApplication, TRUE, $newClub);
+
         $this->assertNotNull($newReply);
     }
 
@@ -59,6 +64,7 @@ class EntityConstructorTest extends TestCase
         $newUser = new User('user@email.com', 'userPassword', 'USER_ROLE', 'userName', $newClub);
         $newBook = new Book("bookName", "bookAuthor", "bookPublisher", $newClub);
         $newComment = new Comment($newUser, $newBook, 'commentText');
+
         $this->assertNotNull($newComment);
     }
 
@@ -67,6 +73,7 @@ class EntityConstructorTest extends TestCase
     {
         $newClub = new Club('clubName', 12);
         $newSuggestion = new Suggestion($newClub, 'bookTitle', 'bookAuthor', 'bookPublisher');
+
         $this->assertNotNull($newSuggestion);
     }
 
