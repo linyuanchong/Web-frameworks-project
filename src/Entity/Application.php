@@ -38,21 +38,6 @@ class Application
      */
     private $club;
 
-    /**
-     * Application constructor.
-     * @param $name
-     * @param $email
-     * @param $password
-     * @param $club
-     */
-    public function __construct($name, $email, $password, $club)
-    {
-        $this->name = $name;
-        $this->email = $email;
-        $this->password = $password;
-        $this->club = $club;
-    }
-
     public function getId(): ?int
     {
         return $this->id;

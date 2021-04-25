@@ -37,21 +37,6 @@ class Suggestion
      */
     private $publisher;
 
-    /**
-     * Suggestion constructor.
-     * @param $club
-     * @param $booktitle
-     * @param $author
-     * @param $publisher
-     */
-    public function __construct($club, $booktitle, $author, $publisher)
-    {
-        $this->club = $club;
-        $this->booktitle = $booktitle;
-        $this->author = $author;
-        $this->publisher = $publisher;
-    }
-
     public function getId(): ?int
     {
         return $this->id;
