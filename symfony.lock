@@ -41,6 +41,9 @@
     "codeception/module-doctrine2": {
         "version": "1.1.1"
     },
+    "codeception/module-phpbrowser": {
+        "version": "1.0.2"
+    },
     "codeception/module-rest": {
         "version": "1.2.8"
     },
