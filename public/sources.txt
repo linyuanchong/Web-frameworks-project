@@ -1,0 +1,17 @@
+NAVIGATION BAR CSS:
+https://www.w3schools.com/css/css_navbar_horizontal.asp
+
+FIXED MENU:
+https://www.w3schools.com/howto/howto_css_fixed_menu.asp
+
+TEXT CSS:
+https://www.w3schools.com/css/css_text.asp
+
+BUTTON CSS:
+https://www.w3schools.com/css/css3_buttons.asp
+
+BACKGROUND CSS:
+https://css-tricks.com/perfect-full-page-background-image/
+
+PAPER BACKGROUND IMAGE:
+https://wallpaperaccess.com/full/2578748.jpg

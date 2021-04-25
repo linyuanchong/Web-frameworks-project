@@ -37,6 +37,21 @@ class Book
      */
     private $club;
 
+    /**
+     * Book constructor.
+     * @param $name
+     * @param $author
+     * @param $publisher
+     * @param $club
+     */
+    public function __construct($name, $author, $publisher, $club)
+    {
+        $this->name = $name;
+        $this->author = $author;
+        $this->publisher = $publisher;
+        $this->club = $club;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

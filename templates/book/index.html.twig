@@ -5,8 +5,10 @@
 {% block body %}
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <h1>Books of my club</h1>
+        <h2>List of books only from my club.</h2>
     {% else %}
         <h1>Books</h1>
+        <h2>Full list of all books.</h2>
     {% endif %}
 
     <table class="table">

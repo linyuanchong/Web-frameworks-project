@@ -89,4 +89,9 @@ class Suggestion
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->booktitle;
+    }
 }

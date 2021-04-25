@@ -34,8 +34,10 @@ class Club
      */
     private $books;
 
-    public function __construct()
+    public function __construct($name, $memberCount)
     {
+        $this->name = $name;
+        $this->memberCount = $memberCount;
         $this->books = new ArrayCollection();
     }
 

@@ -45,6 +45,23 @@ class User implements UserInterface
      */
     private $name;
 
+    /**
+     * User constructor.
+     * @param $email
+     * @param string $password
+     * @param $role
+     * @param $club
+     * @param $name
+     */
+    public function __construct($email, string $password, $role, $name, $club)
+    {
+        $this->email = $email;
+        $this->password = $password;
+        $this->role = $role;
+        $this->name = $name;
+        $this->club = $club;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
